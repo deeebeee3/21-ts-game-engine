@@ -19,6 +19,16 @@ var TSEngine;
             TSEngine.gl.clearColor(0, 0, 0, 1);
             this.loop();
         };
+        /**
+         * Resizes the canvas to fit the window
+         */
+        Engine.prototype.resize = function () {
+            // guard against canvas not being defined before code run
+            if (this._canvas !== undefined) {
+                this._canvas.width = window.innerWidth;
+                this._canvas.height = window.innerHeight;
+            }
+        };
         Engine.prototype.loop = function () {
             TSEngine.gl.clear(TSEngine.gl.COLOR_BUFFER_BIT);
             requestAnimationFrame(this.loop.bind(this));
@@ -64,9 +74,13 @@ var TSEngine;
     }());
     TSEngine.GLUtilities = GLUtilities;
 })(TSEngine || (TSEngine = {}));
+var engine;
 /* The main entry point to the application */
 window.onload = function () {
-    var engine = new TSEngine.Engine();
+    engine = new TSEngine.Engine();
     engine.start();
+};
+window.onresize = function () {
+    engine.resize();
 };
 //# sourceMappingURL=main.js.map

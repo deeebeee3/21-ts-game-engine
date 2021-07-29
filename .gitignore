@@ -106,3 +106,5 @@ dist
 #Ignore dest folder
 /dest
 dest
+/dest/
+dest/

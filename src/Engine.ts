@@ -22,6 +22,17 @@ namespace TSEngine {
       this.loop();
     }
 
+    /**
+     * Resizes the canvas to fit the window
+     */
+    public resize(): void {
+      // guard against canvas not being defined before code run
+      if (this._canvas !== undefined) {
+        this._canvas.width = window.innerWidth;
+        this._canvas.height = window.innerHeight;
+      }
+    }
+
     private loop(): void {
       gl.clear(gl.COLOR_BUFFER_BIT);
       requestAnimationFrame(this.loop.bind(this));
