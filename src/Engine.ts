@@ -3,7 +3,6 @@ namespace TSEngine {
    * The main game engine class
    */
   export class Engine {
-    private _count: number = 0;
     private _canvas: HTMLCanvasElement;
 
     /**

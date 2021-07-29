@@ -9,7 +9,6 @@ var TSEngine;
          * Create a new engine.
          */
         function Engine() {
-            this._count = 0;
             console.log("Engine class constructor was called");
             this._canvas = TSEngine.GLUtilities.initialize();
         }
