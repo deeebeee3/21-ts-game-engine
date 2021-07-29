@@ -1,4 +1,4 @@
-namespace TSEngine {
+namespace TSE {
   /**
    * The main game engine class
    */

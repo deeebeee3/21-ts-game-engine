@@ -1,6 +1,15 @@
 "use strict";
-var TSEngine;
-(function (TSEngine) {
+var engine;
+/* The main entry point to the application */
+window.onload = function () {
+    engine = new TSE.Engine();
+    engine.start();
+};
+window.onresize = function () {
+    engine.resize();
+};
+var TSE;
+(function (TSE) {
     /**
      * The main game engine class
      */
@@ -10,13 +19,13 @@ var TSEngine;
          */
         function Engine() {
             console.log("Engine class constructor was called");
-            this._canvas = TSEngine.GLUtilities.initialize();
+            this._canvas = TSE.GLUtilities.initialize();
         }
         /**
          * Starts up this engine.
          */
         Engine.prototype.start = function () {
-            TSEngine.gl.clearColor(0, 0, 0, 1);
+            TSE.gl.clearColor(0, 0, 0, 1);
             this.loop();
         };
         /**
@@ -30,15 +39,15 @@ var TSEngine;
             }
         };
         Engine.prototype.loop = function () {
-            TSEngine.gl.clear(TSEngine.gl.COLOR_BUFFER_BIT);
+            TSE.gl.clear(TSE.gl.COLOR_BUFFER_BIT);
             requestAnimationFrame(this.loop.bind(this));
         };
         return Engine;
     }());
-    TSEngine.Engine = Engine;
-})(TSEngine || (TSEngine = {}));
-var TSEngine;
-(function (TSEngine) {
+    TSE.Engine = Engine;
+})(TSE || (TSE = {}));
+var TSE;
+(function (TSE) {
     /**
      * Responsible for setting up a WebGL rendering context.
      */
@@ -64,23 +73,14 @@ var TSEngine;
                 canvas = document.createElement("canvas");
                 document.body.appendChild(canvas);
             }
-            TSEngine.gl = canvas.getContext("webgl");
-            if (TSEngine.gl === undefined) {
+            TSE.gl = canvas.getContext("webgl");
+            if (TSE.gl === undefined) {
                 throw new Error("Unable to initialize WebGL!");
             }
             return canvas;
         };
         return GLUtilities;
     }());
-    TSEngine.GLUtilities = GLUtilities;
-})(TSEngine || (TSEngine = {}));
-var engine;
-/* The main entry point to the application */
-window.onload = function () {
-    engine = new TSEngine.Engine();
-    engine.start();
-};
-window.onresize = function () {
-    engine.resize();
-};
+    TSE.GLUtilities = GLUtilities;
+})(TSE || (TSE = {}));
 //# sourceMappingURL=main.js.map

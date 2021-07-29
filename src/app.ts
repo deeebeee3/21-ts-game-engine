@@ -1,8 +1,8 @@
-var engine: TSEngine.Engine;
+var engine: TSE.Engine;
 
 /* The main entry point to the application */
 window.onload = function () {
-  engine = new TSEngine.Engine();
+  engine = new TSE.Engine();
 
   engine.start();
 };

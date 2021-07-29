@@ -1,4 +1,4 @@
-namespace TSEngine {
+namespace TSE {
   /**
    * The globally accessible WebGL rendering context.
    */
